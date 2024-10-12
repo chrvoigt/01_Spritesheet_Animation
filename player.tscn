@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://nb2fhjk7yse8"]
+
+[ext_resource type="Texture2D" uid="uid://cttd2qvdqlrfu" path="res://assets/hat_man.png" id="1_qukph"]
+[ext_resource type="Script" path="res://player.gd" id="1_sx78a"]
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_sx78a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qukph")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(20, -26)
+zoom = Vector2(4, 4)
