@@ -1,5 +1,5 @@
 # File: player.gd
-extends Node2D  # You can also use CharacterBody2D if needed
+extends Node2D  
 
 # Player movement speed in Pixel 
 var speed = 150
@@ -19,7 +19,6 @@ func _process(delta):
 	handle_movement(delta)
 	if use_mouse:
 		move_to_target(delta)
-	
 	
 func _input (event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
