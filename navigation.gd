@@ -5,7 +5,7 @@ extends Node2D  # You can also use CharacterBody2D if needed
 var speed = 150
 
 #follow the mouse 
-var use_mouse = true
+var use_mouse = false
 var target_position: Vector2 = Vector2(100,100)
 
 # Reference to the AnimationPlayer
@@ -16,19 +16,25 @@ func _ready():
 	target_position = $Sprite2D.position
 	
 func _process(delta):
-	move_to_target(delta)
+	handle_movement(delta)
+	if use_mouse:
+		move_to_target(delta)
+	
 	
 func _input (event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		target_position = get_global_mouse_position()	
+		use_mouse = true
 	
 func move_to_target(delta): 
 	var current_position = $Sprite2D.position
 	# Calculate the direction vector from the current position to the target
 	var direction = target_position - current_position
-	if direction.length() > 1:  # Tolerance to stop jittering when close enough
+	if direction.length() > 2:  # Tolerance to stop jittering when close enough
 		direction = direction.normalized()  # Normalize the direction
 		$Sprite2D.position += direction * speed * delta  # Move the sprite towards the target
+	else:
+		use_mouse = false
 
 
 func handle_movement(delta):
