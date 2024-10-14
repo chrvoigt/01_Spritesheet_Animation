@@ -1,7 +1,11 @@
+# File: player.gd
 extends Node2D  
 
 # Player movement speed in Pixel 
-var speed = 200
+var speed = 150
+ 
+# Reference to the AnimationPlayer
+@onready var anim_player = $AnimationPlayer
 	
 func _process(delta):
 	handle_movement(delta)
@@ -11,14 +15,20 @@ func handle_movement(delta):
 
 	# Handle keyboard input (WASD or arrow keys)
 	if Input.is_key_pressed(KEY_W) or Input.is_key_pressed(KEY_UP):
-		input_vector.y -= 1 
+		input_vector.y -= 1
+		anim_player.play("walking_up")
 	elif Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_DOWN):
-		input_vector.y += 1 
+		input_vector.y += 1
+		anim_player.play("walking_down")
 	elif Input.is_key_pressed(KEY_A) or Input.is_key_pressed(KEY_LEFT):
-		input_vector.x -= 1 
+		input_vector.x -= 1
+		anim_player.play("walking_left")
 	elif Input.is_key_pressed(KEY_D) or Input.is_key_pressed(KEY_RIGHT):
-		input_vector.x += 1  
- 
+		input_vector.x += 1
+		anim_player.play("walking_right")    
+	else:
+		# Stop the animation if no movement
+		anim_player.stop()
 		
 	# Handle controller input (left analog stick)
 	input_vector.x += Input.get_joy_axis(0, JOY_AXIS_LEFT_X)

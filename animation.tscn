@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dgunn05t6ql0w"]
 
-[ext_resource type="Script" path="res://navigation.gd" id="1_bawsl"]
+[ext_resource type="Script" path="res://animation.gd" id="1_lgqig"]
 [ext_resource type="Texture2D" uid="uid://bw1n6gc3ckn8g" path="res://assets/walking-ghost.png" id="2_swufp"]
 
 [sub_resource type="Animation" id="Animation_83a37"]
@@ -100,7 +100,7 @@ _data = {
 }
 
 [node name="Animation" type="Node2D"]
-script = ExtResource("1_bawsl")
+script = ExtResource("1_lgqig")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(3, 3)

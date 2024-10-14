@@ -5,6 +5,11 @@ var speed = 200
 	
 func _process(delta):
 	handle_movement(delta)
+	
+func move_to_target(delta): 
+	var current_position = $Sprite2D.position
+	# Calculate the direction vector from the current position to the target
+
 
 func handle_movement(delta):
 	var input_vector = Vector2.ZERO
